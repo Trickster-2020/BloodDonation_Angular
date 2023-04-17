@@ -1,0 +1,29 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .top{
+    text-align: center;
+  }
+ 
+  .p-inputgroup{
+    width: 50%;
+    margin: 2%;
+  }
+  .label{
+    font-size: large;
+    margin-top: 1.5%;
+  }
+  .input{
+    margin-left: 5%;
+  }
+  .demo-table {
+    width: 100%;
+  }
+  
+  .demo-button-container {
+    padding-bottom: 16px;
+  }
+  
+  .demo-button + .demo-button {
+    margin-left: 8px;
+  }

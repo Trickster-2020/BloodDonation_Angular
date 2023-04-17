@@ -1,0 +1,16 @@
+.content{
+    padding-top: 10px;
+}
+.sidha{
+    display: flex;
+    gap: 10px;
+    mat-form-field{
+        width: 100%;
+    }
+}
+.actio{
+    padding: opx 55px 20px;
+    button{
+        flex:1;
+    }
+}
