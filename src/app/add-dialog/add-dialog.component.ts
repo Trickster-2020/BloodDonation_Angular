@@ -48,9 +48,11 @@ export class AddDialogComponent {
   ];
 
   onFormSubmit() {
+
     if (this.donerDetails.valid) {
       this._service.addDoner(this.donerDetails.value).subscribe({
         next:(val:any)=>{
+          console.log(this.donerDetails.value)
           alert("User Added Successfully ");
           this._dialogRef.close();
         },

@@ -7,6 +7,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,25 +16,51 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class AppComponent {
 
+  displayedColumns: string[] = ['id', 'Name', 'Age', 'Gender','Blood_Group','Occupation','PhoneNumber','Email','action'];
+  dataSource!: MatTableDataSource<any>;
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
 
   listuser:any;
-  constructor(private user:UserService,private _dialog:MatDialog,private _donerservice:UserService) { 
+
+  constructor(private _dialog:MatDialog,private _donerservice:UserService) { 
     this.getDonerList();
   }
 
+
+
   getDonerList(){
-    this._donerservice.getDoner()
+    this._donerservice.getDoner().subscribe({
+      next: (res:any)=>{
+        this.dataSource=new MatTableDataSource(res);
+        this.dataSource.sort=this.sort;
+        this.dataSource.paginator=this.paginator;
+      },
+    })
     
   }
   openAddDialog(){
     this._dialog.open(AddDialogComponent)
   }
   del(userid:any){ 
-      this.user.deleteUser(userid).subscribe(data=>{
-        console.log("User deleted")
-      })
+    console.log(userid);
+      this._donerservice.deleteUser(userid).subscribe({
+        next:(res:any)=>{
+          alert("User Deleted");
+        },
+        error:console.log,
+        
+      });
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
 }

@@ -16,6 +16,6 @@ export class UserService {
     return this.http.delete(this.baseUrl+'delete/'+id)
   }
   addDoner(data:any){
-    return this.http.post(this.baseUrl,data)
+    return this.http.post(this.baseUrl+"add",data)
   }
 }
