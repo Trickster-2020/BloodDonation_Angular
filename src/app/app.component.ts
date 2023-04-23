@@ -16,7 +16,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class AppComponent {
 
-  displayedColumns: string[] = ['id', 'Name', 'Age', 'Gender','Blood_Group','Occupation','PhoneNumber','Email','action'];
+  displayedColumns: string[] = [ 'Fname', 'Lname','Age','Bloodgroup','Date','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -34,6 +34,7 @@ export class AppComponent {
   getDonerList(){
     this._donerservice.getDoner().subscribe({
       next: (res:any)=>{
+        console.log(res);
         this.dataSource=new MatTableDataSource(res);
         this.dataSource.sort=this.sort;
         this.dataSource.paginator=this.paginator;

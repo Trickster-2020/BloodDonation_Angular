@@ -14,14 +14,14 @@ export class AddDialogComponent {
 
   constructor(private _fb: FormBuilder,private _service:UserService,private _dialogRef:DialogRef <AddDialogComponent>) {
     this.donerDetails = this._fb.group({
-      Name: '',
+      Fname: '',
+      Lname: '',
       Age: '',
-      Gender: '',
       Blood_Group: '',
-      Donated_date: '',
-      PhoneNumber: '',
-      Email: '',
-      Occupation: '',
+      Date: '',
+      // PhoneNumber: '',
+      // Email: '',
+      // Occupation: '',
     })
   }
 
@@ -36,16 +36,16 @@ export class AddDialogComponent {
     'O-'
   ];
 
-  occupation: string[] = [
-    'Army',
-    'Banker',
-    'Carpenter',
-    'Doctor',
-    'Engineer',
-    'Farmer',
-    'Student',
-    'Goverment Service'
-  ];
+  // occupation: string[] = [
+  //   'Army',
+  //   'Banker',
+  //   'Carpenter',
+  //   'Doctor',
+  //   'Engineer',
+  //   'Farmer',
+  //   'Student',
+  //   'Goverment Service'
+  // ];
 
   onFormSubmit() {
 
