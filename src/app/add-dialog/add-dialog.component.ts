@@ -12,7 +12,7 @@ export class AddDialogComponent {
 
   donerDetails: FormGroup;
 
-  constructor(private _fb: FormBuilder,private _service:UserService,private _dialogRef:DialogRef <AddDialogComponent>) {
+ /* constructor(private _fb: FormBuilder,private _service:UserService,private _dialogRef:DialogRef <AddDialogComponent>) {
     this.donerDetails = this._fb.group({
       Name: '',
       Age: '',
@@ -23,9 +23,21 @@ export class AddDialogComponent {
       Email: '',
       Occupation: '',
     })
+  } */
+  // 'id', 'Fname','Lname', 'Age','Bloodgroup','Date'
+
+  constructor(private _fb: FormBuilder,private _service:UserService,private _dialogRef:DialogRef <AddDialogComponent>) {
+    this.donerDetails = this._fb.group({
+      Fname: '',
+      Lname: '',
+      Age: '',
+      Bloodgroup: '',
+      // Date:'',
+     
+    })
   }
 
-  bloodGroup: string[] = [
+  Bloodgroupchoices: string[] = [
     'A+',
     'A-',
     'B+',
@@ -36,6 +48,7 @@ export class AddDialogComponent {
     'O-'
   ];
 
+  /*
   occupation: string[] = [
     'Army',
     'Banker',
@@ -45,7 +58,7 @@ export class AddDialogComponent {
     'Farmer',
     'Student',
     'Goverment Service'
-  ];
+  ]; */
 
   onFormSubmit() {
 
@@ -62,5 +75,6 @@ export class AddDialogComponent {
       })
     }
   }
+    
 
 }

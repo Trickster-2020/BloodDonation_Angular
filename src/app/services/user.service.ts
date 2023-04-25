@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl:string= "http://192.168.100.10:8000/";
+  baseUrl:string= "http://127.0.0.1:8000/";
 
   constructor(private http:HttpClient) { }
 
@@ -16,6 +16,7 @@ export class UserService {
     return this.http.delete(this.baseUrl+'delete/'+id)
   }
   addDoner(data:any){
-    return this.http.post(this.baseUrl+"add",data)
+    // return this.http.post(this.baseUrl+"add",data)
+    return this.http.post(this.baseUrl+'add/',data)
   }
 }
