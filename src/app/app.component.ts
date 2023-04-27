@@ -43,18 +43,60 @@ export class AppComponent {
     
   }
   openAddDialog(){
-    this._dialog.open(AddDialogComponent)
+    const dialogRef = this._dialog.open(AddDialogComponent)
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if(val){
+          this.getDonerList();
+        }
+      },
+
+
+    });
   }
   del(userid:any){ 
     console.log(userid);
       this._donerservice.deleteUser(userid).subscribe({
         next:(res:any)=>{
           alert("User Deleted");
+          this.getDonerList();      // this line of function will automatically delete the list and refresh the table
         },
         error:console.log,
         
       });
   }
+
+
+  openeditform(data:any){
+    const dialogRef = this._dialog.open(AddDialogComponent,{
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if(val){
+          this.getDonerList();
+        }
+      },
+
+
+    });
+   
+  }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

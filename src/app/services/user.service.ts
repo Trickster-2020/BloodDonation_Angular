@@ -12,6 +12,13 @@ export class UserService {
   getDoner(){
     return this.http.get(this.baseUrl)
   }
+
+
+  updatedoner(id:number,data:any){
+    return this.http.put(this.baseUrl+'update/',data)
+  }
+
+
   deleteUser(id:any){
     return this.http.delete(this.baseUrl+'delete/'+id)
   }
