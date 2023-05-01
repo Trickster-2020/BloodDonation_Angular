@@ -64,7 +64,6 @@ export class AddDialogComponent implements OnInit{
             console.log(err)
           }
         });
-
       }
       else{                   //else part is for adding data incase if we don't have data
         this._service.addDoner(this.donerDetails.value).subscribe({
